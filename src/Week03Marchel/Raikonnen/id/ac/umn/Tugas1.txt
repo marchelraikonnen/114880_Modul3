@@ -1,0 +1,61 @@
+1) Multidimensional array — penjelasan & contoh
+
+Penjelasan singkat:
+Multidimensional array adalah array yang tiap elemennya sendiri berupa array. Bentuk yang paling umum adalah array 2D (baris × kolom), tetapi bisa juga 3D, 4D, dll.
+
+Contoh (Java):
+
+int[][] randomNumbers = {
+    {50, 70, 90},
+    {20, 30, 40}
+};
+
+System.out.println(randomNumbers[0][0]); // menampilkan 50
+System.out.println(randomNumbers[1][2]); // menampilkan 40
+
+
+Catatan: indeks pertama menunjuk baris, indeks kedua menunjuk kolom. Untuk mengiterasi gunakan nested loop.
+
+2) 13 method String di Java (nama + fungsi singkat + catatan penting)
+
+charAt(int index) — mengembalikan karakter pada posisi index.
+Contoh: "halo".charAt(1) → 'a'.
+
+concat(String str) — menggabungkan str ke akhir string. (Sama seperti +), tapi menghasilkan String baru karena immutability.
+
+contains(CharSequence s) — mengecek apakah string mengandung urutan karakter s; mengembalikan boolean.
+
+length() — mengembalikan jumlah karakter dalam string sebagai int.
+
+substring(int beginIndex, int endIndex) / substring(int beginIndex) — mengambil potongan string; endIndex eksklusif.
+
+toLowerCase() — mengembalikan salinan string dalam huruf kecil (locale-aware versi juga ada).
+
+toUpperCase() — mengembalikan salinan string dalam huruf besar.
+
+split(String regex) — memecah string menjadi array berdasarkan pola regex.
+Catatan: parameter adalah regular expression, jadi karakter khusus harus di-escape jika mau split literal (mis. split("\\.") untuk titik).
+
+replace(CharSequence target, CharSequence replacement) — menggantikan literally semua target dengan replacement. (bukan regex)
+
+replaceAll(String regex, String replacement) — mengganti semua substring yang cocok regex dengan replacement.
+
+compareTo(String anotherString) — membandingkan dua string secara leksikografis; hasil <0, 0, atau >0.
+
+equals(Object anObject) — membandingkan isi string untuk kesetaraan (case-sensitive). Biasakan pakai ini untuk membandingkan String.
+
+format(String format, Object... args) — menghasilkan string ter-format (mirip printf) berdasarkan format string dan argumen.
+
+Tambahan berguna:
+
+Kalau butuh perbandingan tanpa memperhatikan huruf besar/kecil, gunakan equalsIgnoreCase.
+
+Untuk manipulasi string yang berat (banyak concat dalam loop) gunakan StringBuilder/StringBuffer untuk performa lebih baik karena String biasa membuat banyak objek baru.
+
+3) Dua keuntungan immutability pada String (dengan perluasan)
+
+1. Thread-safety tanpa sinkronisasi tambahan
+Karena objek immutable tidak berubah setelah dibuat, beberapa thread bisa membaca instance yang sama tanpa perlu mekanisme sinkronisasi. Ini menyederhanakan kode bersamaan (concurrent) dan mengurangi bug race condition.
+
+2. Mudah diprediksi & aman digunakan sebagai key
+Immutability membuat objek dapat dipakai sebagai kunci di Map dan sebagai elemen Set tanpa risiko nilai berubah setelah dimasukkan. Selain itu, membuat reasoning/penelusuran bug lebih mudah karena state tidak berubah-ubah — memudahkan debugging dan testing.
