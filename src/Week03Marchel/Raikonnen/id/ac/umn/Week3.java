@@ -2,7 +2,7 @@ package Week03Marchel.Raikonnen.id.ac.umn;
 
 import java.util.Scanner;
 
-public class week3 {
+public class Week3 {
     public static void main(String[] args) {
         int input;
         Scanner scanner = new Scanner(System.in);
